@@ -7,7 +7,7 @@ export const authEndpoint = "https://accounts.spotify.com/authorize";
 
 //The redirectUri is the one which we gave in the Spotify Web API settings,
 //this states where to take back the user if the Spotify login was successful.
-const redirectUri = "http://localhost:8080/";
+const redirectUri = "https://musicmecca.herokuapp.com/";
 
 //the Client ID providedby the Spotify Web API when registering app
 const credentials = Credentials();
