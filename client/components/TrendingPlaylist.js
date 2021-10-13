@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Dropdown from "./Dropdown";
 import Listbox from "./Listbox";
 import Detail from "./Detail";
 import Login from "./Login";
@@ -13,11 +12,11 @@ import {
   setTracks,
   setTrending,
 } from "../store";
-import YoutubePlayer from "./YoutubePlayer.js";
-import { Button } from "@material-ui/core";
 import { Grid } from "@material-ui/core";
 import NavBar from "./Navbar";
 import { spotifyTrending } from "./YoutubePlayer.js";
+import App from "../App";
+import { Typography } from "@material-ui/core";
 
 export class TrendingPlaylist extends Component {
   constructor(props) {
@@ -31,6 +30,7 @@ export class TrendingPlaylist extends Component {
   }
 
   async componentDidMount() {
+    if (this.props.token) return;
     try {
       await this.props.setAuthCode();
       if (this.props.authCode) {
@@ -47,14 +47,14 @@ export class TrendingPlaylist extends Component {
     console.log(value.length);
     const currentTracks = [...this.props.trending];
 
-    if (value.length === 22) {
-      currentTracks.filter((t) => "track" in t);
-      const trackInfo = currentTracks.filter((t) => t.track.id === value);
+    if (value.length > 20) {
+      const firstFilter = currentTracks.filter((t) => "track" in t);
+      const trackInfo = firstFilter.filter((t) => t.track.id === value);
       console.log("SPOTIFY TRACK", trackInfo);
       this.setState({ selectedTrack: trackInfo[0].track });
     } else {
-      currentTracks.filter((t) => "embedId" in t);
-      const trackInfo = currentTracks.filter((t) => t.embedId === value);
+      const firstFilter = currentTracks.filter((t) => "embedId" in t);
+      const trackInfo = firstFilter.filter((t) => t.embedId === value);
       console.log("YOUTUBE TRACK", trackInfo);
       this.setState({ selectedTrack: trackInfo[0] });
     }
@@ -62,7 +62,7 @@ export class TrendingPlaylist extends Component {
 
   render() {
     const { trackClicked } = this;
-    const { selectedGenre, selectedPlaylist, selectedTrack } = this.state;
+    const { selectedTrack } = this.state;
     const { token, trending } = this.props;
     return (
       <div className="App">
@@ -70,14 +70,33 @@ export class TrendingPlaylist extends Component {
         {token ? (
           <div>
             <div className="row">
-              <Listbox items={trending} clicked={trackClicked} />
-              {selectedTrack && (
-                <Detail
-                  tracks={trending}
-                  selectedTrack={selectedTrack}
-                  token={token}
-                />
-              )}
+              <Typography variant="h6" align="left">
+                Saved Music
+              </Typography>
+              <Grid
+                container
+                direction="row"
+                justifyContent="space-around"
+                alignItems="center"
+              >
+                {trending && (
+                  <Listbox items={trending} clicked={trackClicked} />
+                )}
+                {selectedTrack && (
+                  <Detail
+                    tracks={trending}
+                    selectedTrack={selectedTrack}
+                    token={token}
+                  />
+                )}
+              </Grid>
+              <br></br>
+              <br></br>
+              <br></br>
+              <Typography variant="h6" align="left">
+                Discover
+              </Typography>
+              <App />
             </div>
           </div>
         ) : (

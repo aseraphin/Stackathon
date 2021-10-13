@@ -30,11 +30,11 @@ export class App extends Component {
 
   async componentDidMount() {
     try {
-      await this.props.setUser(this.props.token);
       await this.props.setGenres(this.props.token);
     } catch (error) {
       await this.props.setAuthCode();
       if (this.props.authCode) {
+        await this.props.setUser(this.props.token);
         await this.props.setToken(this.props.authCode);
         await this.props.setUser(this.props.token);
         await this.props.setGenres(this.props.token);
@@ -104,17 +104,25 @@ export class App extends Component {
                 </div>
               </Grid>
               <div className="row">
-                <Listbox items={tracks} clicked={trackClicked} />
-                {selectedTrack && (
-                  <Detail
-                    tracks={tracks}
-                    selectedTrack={selectedTrack}
-                    token={token}
-                  />
-                )}
+                <Grid
+                  container
+                  direction="row"
+                  justifyContent="space-around"
+                  alignItems="center"
+                >
+                  <Listbox items={tracks} clicked={trackClicked} />
+                  {/* </div> */}
+                  {/* <div> */}
+                  {selectedTrack && (
+                    <Detail
+                      tracks={tracks}
+                      selectedTrack={selectedTrack}
+                      token={token}
+                    />
+                  )}
+                </Grid>
               </div>
             </form>
-            <YoutubePlayer embedId="vZdu0i5LN_I" />
           </div>
         ) : (
           <Login />

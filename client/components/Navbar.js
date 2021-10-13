@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,11 +25,13 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography align="left" variant="h6" className={classes.title}>
             Playlists
           </Typography>
-          <Button color="inherit">YouTube Reccomendations</Button>
-          <Button color="inherit">Spotify Reccomendations</Button>
+          <Button color="inherit">Youtube Reccomendations</Button>
+          <Button component={Link} to={"/discover"} color="inherit">
+            Spotify Reccomendations
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

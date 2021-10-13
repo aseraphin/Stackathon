@@ -5,7 +5,6 @@ import axios from "axios";
 import { Credentials } from "../components/Credentials";
 import history from "../history";
 const queryString = require("query-string");
-import { spotifyTrending } from "../components/YoutubePlayer";
 
 //The redirectUri is the one which we gave in the Spotify Web API settings,
 //this states where to take back the user if the Spotify login was successful.
@@ -127,7 +126,7 @@ export const setToken = (authCode) => {
       data: queryString.stringify({
         grant_type: "authorization_code",
         code: authCode,
-        redirect_uri: "http://localhost:8080/",
+        redirect_uri: "https://musicmecca.herokuapp.com/",
       }),
       headers: {
         "content-type": "application/x-www-form-urlencoded",

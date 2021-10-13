@@ -11,8 +11,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Switch>
-        {/* <Route path="/" component={App} /> */}
         <Route path="/" component={TrendingPlaylist} />
+        <Route path="/discover" component={App} exact />
       </Switch>
     </Router>
   </Provider>,

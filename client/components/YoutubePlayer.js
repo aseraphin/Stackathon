@@ -5,8 +5,8 @@ const YoutubePlayer = ({ embedId }) => (
   <div className="video-responsive">
     <Grid container direction="row" justifyContent="center" alignItems="center">
       <iframe
-        width="560"
-        height="315"
+        width="640"
+        height="360"
         src={`https://www.youtube.com/embed/${embedId}`}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -83,36 +83,73 @@ export const youtubeTrending = [
   {
     title: "Justin Bieber - Peaches ft. Daniel Caesar, Giveon",
     embedId: "tQ0yjYUFKAE",
+    id: "tQ0yjYUFKAE",
   },
 
   {
     title: "Anderson .Paak & The Free Nationals: NPR Music Tiny Desk Concert",
     embedId: "ferZnZ0_rSM",
+    id: "ferZnZ0_rSM",
   },
 
-  { title: "Mac Miller: NPR Music Tiny Desk Concert", embedId: "QrR_gm6RqCo" },
+  {
+    title: "Mac Miller: NPR Music Tiny Desk Concert",
+    embedId: "QrR_gm6RqCo",
+    id: "QrR_gm6RqCo",
+  },
 
   {
     title:
       "Tyler, The Creator - EARFQUAKE / NEW MAGIC WAND (Live at the 2020 GRAMMYs)",
     embedId: "IJilkMPqvs0",
+    id: "IJilkMPqvs0",
   },
-
-  { title: "FKJ & Masego - Tadow", embedId: "hC8CH0Z3L54" },
 
   {
     title: "Alicia Keys & John Mayer - If I ain't got you - Gravity",
     embedId: "obkrMiyDrbs",
+    id: "obkrMiyDrbs",
   },
 
   {
-    embedId: "fD4rxj7-uO0",
     title: "Jacob Collier & Daniel Caesar - Best Part (Live in Toronto)",
+    embedId: "fD4rxj7-uO0",
+    id: "fD4rxj7-uO0",
   },
 ];
 
 //20 Songs
 export const spotifyTrending = [
+  {
+    title: "Anderson .Paak & The Free Nationals: NPR Music Tiny Desk Concert",
+    embedId: "ferZnZ0_rSM",
+    id: "ferZnZ0_rSM",
+  },
+
+  {
+    title: "Mac Miller: NPR Music Tiny Desk Concert",
+    embedId: "QrR_gm6RqCo",
+    id: "QrR_gm6RqCo",
+  },
+
+  {
+    title:
+      "Tyler, The Creator - EARFQUAKE / NEW MAGIC WAND (Live at the 2020 GRAMMYs)",
+    embedId: "IJilkMPqvs0",
+    id: "IJilkMPqvs0",
+  },
+
+  {
+    title: "Alicia Keys & John Mayer - If I ain't got you - Gravity",
+    embedId: "obkrMiyDrbs",
+    id: "obkrMiyDrbs",
+  },
+
+  {
+    title: "Jacob Collier & Daniel Caesar - Best Part (Live in Toronto)",
+    embedId: "fD4rxj7-uO0",
+    id: "fD4rxj7-uO0",
+  },
   {
     title: "Lizzo - Rumors feat. Cardi B",
     embedId: "4P9XUrniiK4",

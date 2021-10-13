@@ -2,10 +2,15 @@ import React from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 import { Grid } from "@material-ui/core";
 import YoutubePlayer from "./YoutubePlayer";
+import { Typography } from "@material-ui/core";
 
 const Detail = ({ selectedTrack, token, tracks }) => {
   return (
     <div className="content">
+      <br></br>
+      <Typography gutterBottom="true" variant="h4" align="left">
+        {" "}
+      </Typography>
       {"uri" in selectedTrack ? (
         <div className="offset-md-1 col-sm-4">
           <Grid
@@ -45,6 +50,7 @@ const Detail = ({ selectedTrack, token, tracks }) => {
             </Grid>
           </Grid>
           <SpotifyPlayer uris={[selectedTrack.uri]} token={token} />
+          {/* <SpotifyPlayer uris={tracks.map((t) => t.track.uri)} token={token} /> */}
         </div>
       ) : (
         <YoutubePlayer embedId={selectedTrack.embedId} />
